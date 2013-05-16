@@ -34,9 +34,10 @@ def fetchTorrent(torrent_name, filename):
         raise FileExistsError(filename)
     
     try:
-        torrent = urllib.request.urlopen(url, timeout=2)
+        torrent = urllib.request.urlopen(url, timeout=60)
     except urllib.error.HTTPError as err:
         if (err.code==404):
+            logger.debug("Torrent not found on server.")
             return False;
         else:
             raise err

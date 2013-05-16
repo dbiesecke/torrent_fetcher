@@ -46,5 +46,7 @@ if __name__ == '__main__':
             elif recording.datetime+timeout<datetime.datetime.today():
                 logger.error("Could not find {0}. Skipping this torrent!".format(torrent_name))
                 recording.next()
+            else:
+                break;
     
     config.save(configdata, options.configfile)
