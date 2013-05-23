@@ -46,4 +46,6 @@ def fetchTorrent(torrent_name, filename):
     f.write(torrent.readall())
     f.close()
     
+    logger.info("Fetched {0}.".format(torrent_name))
+    
     return True
