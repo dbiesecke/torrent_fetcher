@@ -21,6 +21,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 TORRENT_TEMPLATE="{titel}_{date}_{time}_{station}_{length}_TVOON_DE.mpg.{quality}.avi.otrkey.torrent"
+TORRENT_URL_TEMPLATE="http://81.95.11.2/torrents/{date}/{torrent}"
 
 class Recording(object):
     def __init__(self, titel, time, date, length, station, quality="HD", recurrence="once"):
@@ -36,6 +37,11 @@ class Recording(object):
                                             time=self.datetime.strftime("%H-%M"),
                                             station=self.station, length=self.length, quality=self.quality)
         return torrentname
+
+    def getTorrentUrl(self):
+        torrenturl = TORRENT_URL_TEMPLATE.format(date=self.datetime.strftime("%y.%m.%d"), torrent=self.getTorrentName())
+        return torrenturl
+
         
     def next(self):
         if self.recurrence is None:

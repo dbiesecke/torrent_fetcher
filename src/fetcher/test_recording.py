@@ -39,6 +39,12 @@ class TestRecording(unittest.TestCase):
         self.assertEqual(torrentname, "The_Simpsons_13.04.28_20-15_ard_90_TVOON_DE.mpg.HD.avi.otrkey.torrent",
                          "Wrong torrent name.")
 
+    def test_getTorrentUrl(self):
+        myrecording=recording.Recording("The Simpsons", "20:15", "2013-04-28", "90", "ard")
+        torrenturl= myrecording.getTorrentUrl()
+        self.assertEqual(torrenturl, "http://81.95.11.2/torrents/13.04.28/The_Simpsons_13.04.28_20-15_ard_90_TVOON_DE.mpg.HD.avi.otrkey.torrent",
+                         "Wrong torrent name.")
+
     def test_datetime(self):
         myrecording=recording.Recording("Tatort", "20:15", "2013-04-28", "90", "ard")
         expected_datetime=datetime.datetime(2013, 4, 28, 20, 15)

@@ -40,11 +40,12 @@ if __name__ == '__main__':
         logger.debug("Checking {0}".format(recording.titel))
         while ( (recording.recurrence is not None) and (recording.datetime+delay<datetime.datetime.today()) ):
             torrent_name=recording.getTorrentName()
-            result = otr.fetchTorrent(torrent_name, "{0}/{1}.torrent".format(configdata["folder"], torrent_name))
+            torrent_url=recording.getTorrentUrl()
+            result = otr.fetchTorrent(torrent_url, "{0}/{1}".format(configdata["folder"], torrent_name))
             if result:
                 recording.next()
             elif recording.datetime+timeout<datetime.datetime.today():
-                logger.error("Could not find {0}. Skipping this torrent!".format(torrent_name))
+                logger.error("Could not find {0}. Skipping this torrent!".format(torrent_url))
                 recording.next()
             else:
                 break;

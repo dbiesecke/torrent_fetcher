@@ -24,10 +24,8 @@ import os.path
 import logging
 logger = logging.getLogger(__name__)
 
-TORRENT_URL="http://81.95.11.2/torrents/{0}"
 
-def fetchTorrent(torrent_name, filename):
-    url=TORRENT_URL.format(torrent_name)
+def fetchTorrent(url, filename):
     logger.debug("Fetch torrent from {0}".format(url))
     if (os.path.exists(filename)):
         logger.error("Output file already exists: {0}".format(filename))
@@ -46,6 +44,6 @@ def fetchTorrent(torrent_name, filename):
     f.write(torrent.readall())
     f.close()
     
-    logger.info("Fetched {0}.".format(torrent_name))
+    logger.info("Fetched {0}.".format(url))
     
     return True
