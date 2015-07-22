@@ -20,7 +20,7 @@ import datetime
 import logging
 logger = logging.getLogger(__name__)
 
-TORRENT_TEMPLATE="{titel}_{date}_{time}_{station}_{length}_TVOON_DE.mpg.{quality}.avi.otrkey.torrent"
+TORRENT_TEMPLATE="{titel}_{date}_{time}_{station}_{length}_TVOON_DE.mpg.avi.otrkey.torrent"
 TORRENT_URL_TEMPLATE="http://81.95.11.2/torrents/{date}/{torrent}"
 
 class Recording(object):
